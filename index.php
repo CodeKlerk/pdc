@@ -23,7 +23,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 
-define('APPLICATION_NAME', 'Google Calendar API PHP Quickstart');
+define('APPLICATION_NAME', 'Periodontist App');
 define('CREDENTIALS_PATH', '~/.credentials/calendar-php-quickstart.json');
 define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 // If modifying these scopes, delete your previously saved credentials
@@ -72,13 +72,13 @@ function getClient() {
 
   // Refresh the token if it's expired.
   if ($client->isAccessTokenExpired()) {
-    $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-    file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
-#   $refreshToken = $client->getRefreshToken();
-#    $client->refreshToken($refreshToken);
-#    $newAccessToken = $client->getAccessToken();
-#    $newAccessToken['refresh_token'] = $refreshToken;
-#    file_put_contents($credentialsPath, json_encode($newAccessToken));
+    // $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+    // file_put_contents($credentialsPath, json_encode($client->getAccessToken()));
+  $refreshToken = $client->getRefreshToken();
+   $client->refreshToken($refreshToken);
+   $newAccessToken = $client->getAccessToken();
+   $newAccessToken['refresh_token'] = $refreshToken;
+   file_put_contents($credentialsPath, json_encode($newAccessToken));
   }
   return $client;
 }
